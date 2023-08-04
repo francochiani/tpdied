@@ -1,21 +1,13 @@
 CREATE TABLE Sucursal(
-	id_sucursal INTEGER PRIMARY KEY,
+	id_sucursal SERIAL NOT null PRIMARY KEY,
 	nombre VARCHAR(100),
 	horario_apertura VARCHAR(50),
 	horario_cierre VARCHAR(50),
 	estado_sucursal VARCHAR(50)
 );
 
-CREATE TABLE Puerto(
-	id_sucursal INTEGER PRIMARY KEY
-);
-
-CREATE TABLE Centro(
-	id_sucursal INTEGER PRIMARY KEY
-);
-
 CREATE TABLE Producto(
-	id_producto INTEGER PRIMARY KEY,
+	id_producto SERIAL NOT null PRIMARY KEY,
 	nombre VARCHAR(100),
 	descripcion VARCHAR(300),
 	precio_unitario FLOAT(30),
@@ -23,7 +15,7 @@ CREATE TABLE Producto(
 );
 
 CREATE TABLE Camion(
-	id_camion INTEGER PRIMARY KEY,
+	id_camion SERIAL NOT null PRIMARY KEY,
 	capacidad FLOAT(30),
 	sucursal_pertenece INTEGER REFERENCES Sucursal(id_sucursal)
 );
@@ -38,7 +30,7 @@ CREATE TABLE Sucursal_Producto(
 );
 
 CREATE TABLE Ruta(
-    id_ruta INTEGER PRIMARY KEY,
+    id_ruta SERIAL NOT null PRIMARY KEY,
     sucursal_origen INTEGER,
     sucursal_destino INTEGER,
     tiempo_de_transito INTEGER,
@@ -50,7 +42,7 @@ CREATE TABLE Ruta(
 );
 
 CREATE TABLE Orden_De_Provision(
-	id_orden INTEGER PRIMARY KEY,
+	id_orden SERIAL NOT null PRIMARY KEY,
 	fecha_orden DATE,
 	sucursal_destino INTEGER,
 	tiempo_max_horas INTEGER,

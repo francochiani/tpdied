@@ -17,12 +17,10 @@ public class NuevaSucursal extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        campoId = new javax.swing.JTextField();
         campoNombre = new javax.swing.JTextField();
         campoApertura = new javax.swing.JTextField();
         campoCierre = new javax.swing.JTextField();
         comboEstado = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -42,8 +40,6 @@ public class NuevaSucursal extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("Número de identificación:");
-
         jLabel2.setText("Nombre:");
 
         jLabel3.setText("Horario de apertura:");
@@ -57,47 +53,40 @@ public class NuevaSucursal extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(campoId, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                     .addComponent(campoNombre)
                     .addComponent(campoApertura)
                     .addComponent(campoCierre)
-                    .addComponent(comboEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(comboEstado, 0, 291, Short.MAX_VALUE))
                 .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoId, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoCierre, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(26, 26, 26))
+                .addContainerGap())
         );
 
         btnAgregar.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
@@ -128,7 +117,7 @@ public class NuevaSucursal extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAgregar)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -137,12 +126,11 @@ public class NuevaSucursal extends javax.swing.JInternalFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         Mensajes informacion = new Mensajes();
         try {
-            PreparedStatement guardar = enlace.prepareStatement("INSERT INTO sucursal (id_sucursal, nombre, horario_apertura, horario_cierre, estado_sucursal) VALUES (?,?,?,?,?)");
-            guardar.setInt(1, Integer.parseInt(campoId.getText()));
-            guardar.setString(2, campoNombre.getText());
-            guardar.setString(3, campoApertura.getText());
-            guardar.setString(4, campoCierre.getText());
-            guardar.setString(5, comboEstado.getSelectedItem().toString());
+            PreparedStatement guardar = enlace.prepareStatement("INSERT INTO sucursal (nombre, horario_apertura, horario_cierre, estado_sucursal) VALUES (?,?,?,?)");
+            guardar.setString(1, campoNombre.getText());
+            guardar.setString(2, campoApertura.getText());
+            guardar.setString(3, campoCierre.getText());
+            guardar.setString(4, comboEstado.getSelectedItem().toString());
             guardar.executeUpdate();
             informacion.mensajeInformativo("Sucursal creada con éxito");
             this.dispose();
@@ -160,10 +148,8 @@ public class NuevaSucursal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JTextField campoApertura;
     private javax.swing.JTextField campoCierre;
-    private javax.swing.JTextField campoId;
     private javax.swing.JTextField campoNombre;
     private javax.swing.JComboBox<String> comboEstado;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -28,12 +28,24 @@ public class Main extends javax.swing.JFrame {
         opAniadirSucursal = new javax.swing.JMenuItem();
         opEditarSucursal = new javax.swing.JMenuItem();
         opEliminarSucursal = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 650));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -79,19 +91,54 @@ public class Main extends javax.swing.JFrame {
             }
         });
         MenuPrincipal.add(opEliminarSucursal);
+        MenuPrincipal.add(jSeparator2);
+
+        jMenuItem9.setText("Flujo máximo");
+        MenuPrincipal.add(jMenuItem9);
+
+        jMenuItem10.setText("Page rank");
+        MenuPrincipal.add(jMenuItem10);
 
         jMenuBar1.add(MenuPrincipal);
 
         jMenu2.setText("Caminos");
+
+        jMenuItem1.setText("Buscar");
+        jMenu2.add(jMenuItem1);
+
+        jMenuItem2.setText("Añadir");
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem3.setText("Editar");
+        jMenu2.add(jMenuItem3);
+
+        jMenuItem4.setText("Eliminar");
+        jMenu2.add(jMenuItem4);
+
         jMenuBar1.add(jMenu2);
 
-        jMenu1.setText("Configuración");
+        jMenu3.setText("Productos");
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("Modo oscuro");
-        jMenu1.add(jCheckBoxMenuItem1);
+        jMenuItem5.setText("Buscar");
+        jMenu3.add(jMenuItem5);
 
-        jMenuBar1.add(jMenu1);
+        jMenuItem6.setText("Agregar");
+        jMenu3.add(jMenuItem6);
+
+        jMenuItem7.setText("Editar");
+        jMenu3.add(jMenuItem7);
+
+        jMenuItem8.setText("Eliminar");
+        jMenu3.add(jMenuItem8);
+        jMenu3.add(jSeparator1);
+
+        jMenu4.setText("Sucursales");
+        jMenu3.add(jMenu4);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu5.setText("Órdenes de provisión");
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -110,7 +157,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void opBuscarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opBuscarSucursalActionPerformed
-        BuscarSucursal ventana = new BuscarSucursal();
+        BuscarSucursal ventana = new BuscarSucursal(connect);
         escritorio.add(ventana);
         ventana.show();
     }//GEN-LAST:event_opBuscarSucursalActionPerformed
@@ -122,23 +169,20 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_opAniadirSucursalActionPerformed
 
     private void opEditarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opEditarSucursalActionPerformed
-        EditarSucursal ventana = new EditarSucursal();
+        EditarSucursal ventana = new EditarSucursal(connect);
         escritorio.add(ventana);
         ventana.show();
     }//GEN-LAST:event_opEditarSucursalActionPerformed
 
     private void opEliminarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opEliminarSucursalActionPerformed
-        EliminarSucursal ventana = new EliminarSucursal();
+        EliminarSucursal ventana = new EliminarSucursal(connect);
         escritorio.add(ventana);
         ventana.show();
     }//GEN-LAST:event_opEliminarSucursalActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         
-                 /*Look and feel FlatLaf, mas moderno. Se puede elegir entre claro y oscuro*/
+        /*Look and feel FlatLaf, mas moderno. Se puede elegir entre claro y oscuro*/
         //FlatLightLaf.setup();
         FlatDarkLaf.setup();
         
@@ -153,12 +197,25 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuPrincipal;
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuItem opAniadirSucursal;
     private javax.swing.JMenuItem opBuscarSucursal;
     private javax.swing.JMenuItem opEditarSucursal;
